@@ -1,14 +1,12 @@
 package com.coolweather.android.db;
 
+import org.litepal.crud.LitePalSupport;
 import org.litepal.exceptions.DataSupportException;
 
-public class Province extends DataSupportException {
+public class Province extends LitePalSupport {
     private int id;
     private String provinceName;
-    public int provinceId;
-    public Province(String errorMessage) {
-        super(errorMessage);
-    }
+    public int provinceCode;
 
     public int getId() {
         return id;
@@ -18,12 +16,12 @@ public class Province extends DataSupportException {
         this.id = id;
     }
 
-    public int getProvinceId() {
-        return provinceId;
+    public int getProvinceCode() {
+        return provinceCode;
     }
 
-    public void setProvinceId(int provinceId) {
-        this.provinceId = provinceId;
+    public void setProvinceCode(int provinceCode) {
+        this.provinceCode = provinceCode;
     }
 
     public void setProvinceName(String provinceName) {

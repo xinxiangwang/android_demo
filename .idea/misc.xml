@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Coding/android/CoolWeather/app/src/main/res/layout/activity_main.xml" value="0.15729166666666666" />
+        <entry key="..\:/Coding/android/CoolWeather/app/src/main/res/layout/choose_area.xml" value="0.15729166666666666" />
         <entry key="..\:/Coding/android/CoolWeather/app/src/main/res/xml/litepal.xml" value="0.2953125" />
+        <entry key="..\:/Coding/android/CoolWeather/app/src/main/res/xml/net_config.xml" value="0.14375" />
       </map>
     </option>
   </component>
