@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.coolweather.android.db.City;
@@ -40,6 +41,7 @@ public class ChooseAreaFragment extends Fragment {
     public static final int LEVEL_PROVICE = 0;
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTRY = 2;
+    private static final String TAG = "ChooseAreaFragment";
     private ProgressDialog progressDialog;
     private TextView titleText;
     private Button backButton;
@@ -78,10 +80,19 @@ public class ChooseAreaFragment extends Fragment {
                 queryCounties();
             } else if (currentLevel == LEVEL_COUNTRY) {
                 String weatherId = countryList.get(i).getWeatherId();
-                Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                intent.putExtra("weather_id", weatherId);
-                startActivity(intent);
-                getActivity().finish();
+                if (getActivity() instanceof MainActivity) {
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
+                } else if (getActivity() instanceof WeatherActivity) {
+                    Log.d(TAG, "onActivityCreated: " + "zxczxc");
+                    WeatherActivity activity = (WeatherActivity) getActivity();
+                    activity.drawerLayout.closeDrawers();
+                    activity.swipeRefreshLayout.setRefreshing(true);
+                    activity.requestWeather(weatherId);
+                }
+
             }
         });
         backButton.setOnClickListener(view -> {
